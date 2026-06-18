@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {useState} from 'react'
+import { Autocomplete } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -16,6 +17,9 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+const tags = ["Angular", "React","Vuejs", "Spring boot", "Node js", "Python"]
+
 
 export default function CreateNewTaskForm({ handleClose, open }) {
 
@@ -64,13 +68,19 @@ export default function CreateNewTaskForm({ handleClose, open }) {
               </Grid>
 
               <Grid item xs={12}>
-                <TextField
-                label="Image"
+                <Autocomplete
+                multiple
+                id='multiple-limit-tags'
+                options={tags}
+                onChange={handleTagsChange}
+                getOptionLabel={(option)=>option}
+                renderInput={(params)=><TextField
+                label="Tags"
                 fullWidth
-                name='image'
-                value={FormData.image}
-                onChange={handleChange}
+              {...params}
+                />}
                 />
+                
               </Grid>
 
               <Grid item xs={12}>
