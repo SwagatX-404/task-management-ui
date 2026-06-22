@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {useState} from 'react'
 import { Autocomplete } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 
 const style = {
   position: 'absolute',
@@ -43,6 +45,7 @@ export default function CreateNewTaskForm({ handleClose, open }) {
 
   const handleTagsChange=(event, value)=>{
       setSelectedTags(value);
+      
 
   }
 
@@ -62,7 +65,7 @@ export default function CreateNewTaskForm({ handleClose, open }) {
                 label="Title"
                 fullWidth
                 name='title'
-                value={FormData.title}
+                value={formData.title}
                 onChange={handleChange}
                 />
               </Grid>
@@ -90,7 +93,7 @@ export default function CreateNewTaskForm({ handleClose, open }) {
                 multiline
                 rows={4}
                 name='description'
-                value={FormData.description}
+                value={formData.description}
                 onChange={handleChange}
                 />
               </Grid>
