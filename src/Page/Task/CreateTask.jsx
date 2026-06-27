@@ -7,6 +7,10 @@ import {useState} from 'react'
 import { Autocomplete } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+
 
 const style = {
   position: 'absolute',
@@ -84,6 +88,19 @@ export default function CreateNewTaskForm({ handleClose, open }) {
                 />}
                 />
                 
+              </Grid>
+
+              <Grid item xs={12}>
+
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DateTimePicker 
+                    onChange={handleDeadlineChange}
+                    className="w-full" 
+                    label="Deadline"
+                    renderInput={(params)=><TextField{...params}/>}
+                    />
+                </LocalizationProvider>
+
               </Grid>
 
               <Grid item xs={12}>
